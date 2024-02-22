@@ -19,6 +19,7 @@ coroutines = "1.8.0"
 kotlinx-serialization-json = "1.6.3"
 coil = "2.5.0"
 ktor = "2.3.8"
+ktorSerialization = "1.8.22"
 hilt = "2.44"
 hilt-navigation-compose = "1.1.0"
 mockk = "1.13.9"
@@ -27,6 +28,7 @@ leakcanary = "3.0-alpha-1"
 kover = "0.7.6"
 ktlint-plugin = "12.1.0"
 ktlint = "1.1.1"
+koin = "3.5.3"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -48,7 +50,7 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" } # kapt
@@ -58,19 +60,30 @@ androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "
 coil-kt = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-kt-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
-ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
-ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
-ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
-ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
-ktor-client-logging-jvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
-ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktorClientAndroid = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktorClientSerialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
+ktorClientCio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktorClientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktorClientLoggingJvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
+ktorSerializationKotlinxJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorClientMock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+
+koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koinCoreCoroutine = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koin" }
+koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koinComposeNavigation = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koin" }
+koinKotr = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
+koinLogger = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }
+koinTest = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koinAndroidTest = { module = "io.insert-koin:koin-android-test", version.ref = "koin" }
+
 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 mockk-agent-jvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockk" }
@@ -85,8 +98,9 @@ ktlint-gradle = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref =
 coil = ["coil-kt", "coil-kt-compose"]
 room = ["androidx-room-ktx", "androidx-room-runtime"]
 #kotest = ["kotest-runner-junit5", "kotest-assertions-core", "kotest-property"]
-ktor = ["ktor-client-android", "ktor-client-serialization", "ktor-client-cio", "ktor-client-content-negotiation", "ktor-client-logging-jvm", "ktor-serialization-kotlinx-json"]
+ktor = ["ktorClientAndroid", "ktorClientSerialization", "ktorClientCio", "ktorClientContentNegotiation", "ktorClientLoggingJvm", "ktorSerializationKotlinxJson"]
 coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
+koin = ["koinAndroid", "koinCore", "koinCoreCoroutine", "koinCompose", "koinComposeNavigation", "koinKotr", "koinLogger", "koinTest", "koinAndroidTest"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -94,7 +108,7 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kover-plugin = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-plugin" }
 
 
